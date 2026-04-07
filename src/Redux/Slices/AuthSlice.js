@@ -6,7 +6,7 @@ import axiosInstance from "../../Helpers/axiosInstance";
 const initialState = {
     isLoggedIn: localStorage.getItem('isLoggedIn') || false,
     role: localStorage.getItem('role') || "",
-    data: JSON.parse(localStorage.getItem('data')) || {}
+    data: localStorage.getItem('data') !== undefined ? JSON.parse(localStorage.getItem('data')) : {}
 };
 
 export const createAccount = createAsyncThunk("/auth/signup", async(data) => {
@@ -77,6 +77,26 @@ export const getUserData = createAsyncThunk("/user/details", async () => {
   }
 });
 
+// function to update user profile
+export const updateProfile = createAsyncThunk("/user/update/profile", async (data) => {
+    try {
+      let res = axiosInstance.put(`/user/update/${data[0]}`, data[1]);
+
+      toast.promise(res, {
+        loading: "Updating...",
+        success: (data) => {
+          return data?.data?.message;
+        },
+        error: "Failed to update profile",
+      });
+      // getting response resolved here
+      res = await res;
+      return res.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  }
+);
 
 const authSlice = createSlice({
     name: 'auth',
@@ -84,6 +104,7 @@ const authSlice = createSlice({
     reducers: {},
     extraReducers: (builders) => {
         builders
+        // for user login 
         .addCase(login.fulfilled, (state, action) => {
             localStorage.setItem("data", JSON.stringify(action?.payload?.user));
             localStorage.setItem("isLoggedIn", true);
@@ -92,12 +113,22 @@ const authSlice = createSlice({
             state.data = action?.payload?.user;
             state.role = action?.payload?.user?.role;
         })
+        // for user logout
         .addCase(logout.fulfilled, (state) => {
             localStorage.clear();
             state.isLoggedIn = false;
             state.data = {};
             state.role = "";
         })
+        // for user details
+        .addCase(getUserData.fulfilled, (state, action) => {
+          if(!action?.payload?.user) return;
+          localStorage.setItem("data", JSON.stringify(action?.payload?.user));
+          localStorage.setItem("isLoggedIn", true);
+          state.isLoggedIn = true;
+          state.data = action?.payload?.user;
+          state.role = action?.payload?.user?.role;
+        });
     }
 });
 
