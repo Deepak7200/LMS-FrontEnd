@@ -58,16 +58,23 @@ function HomeLayout({children}) {
                                 <AiFillCloseCircle size={24}/>
                             </button>
                         </li>
+                        
+                        <li>
+                            <Link to='/'>Home</Link>
+                        </li>
 
                         {isLoggedIn && role === 'ADMIN' && (
                             <li>
                                 <Link to="/admin/dashboard">Admin DashBoard</Link>
                             </li>
                         )}
-                        
-                        <li>
-                            <Link to='/'>Home</Link>
-                        </li>
+
+                        {isLoggedIn && role === 'ADMIN' && (
+                            <li>
+                                <Link to="/course/create">Create new course</Link>
+                            </li>
+                        )}
+
                         <li>
                             <Link to='/courses'>All Courses</Link>
                         </li>

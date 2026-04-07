@@ -6,7 +6,7 @@ import axiosInstance from "../../Helpers/axiosInstance";
 const initialState = {
     isLoggedIn: localStorage.getItem('isLoggedIn') || false,
     role: localStorage.getItem('role') || "",
-    data: localStorage.getItem('data') || {}
+    data: JSON.parse(localStorage.getItem('data')) || {}
 };
 
 export const createAccount = createAsyncThunk("/auth/signup", async(data) => {
@@ -64,6 +64,16 @@ export const logout = createAsyncThunk("auth/logout", async () => {
     return res.data;
   } catch (error) {
     toast.error(error?.response?.data?.message);
+  }
+});
+
+// function to fetch user data
+export const getUserData = createAsyncThunk("/user/details", async () => {
+  try {
+    const res = await axiosInstance.get("/user/me");
+    return res?.data;
+  } catch (error) {
+    toast.error(error.message);
   }
 });
 
