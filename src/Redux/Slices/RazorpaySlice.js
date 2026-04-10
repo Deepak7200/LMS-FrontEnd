@@ -69,15 +69,12 @@ export const getPaymentRecord = createAsyncThunk("paymentrecord", async () => {
   }
 });
 
-// function to cancel the course bundle subscription
-export const cancelCourseBundle = createAsyncThunk("/cancelCourse", async () => {
+export const cancelCourseBundle = createAsyncThunk( "/cancelCourse", async () => {
     try {
       const res = axiosInstance.post("/payments/unsubscribe");
       toast.promise(res, {
         loading: "Unsubscribing the bundle...",
-        success: (data) => {
-            return data?.data?.message;
-        },
+        success: "Bundle unsubscibed successfully",
         error: "Failed to unsubscibe the bundle",
       });
       const response = await res;
@@ -115,6 +112,16 @@ const razorpaySlice = createSlice({
         state.allPayments = action?.payload?.allPayments;
         state.finalMonths = action?.payload?.finalMonths;
         state.monthlySalesRecord = action?.payload?.monthlySalesRecord;
+      })
+      .addCase(cancelCourseBundle.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(cancelCourseBundle.fulfilled, (state) => {
+        state.loading = false;   // ✅ MUST
+        state.isCancelled = true; // optional but useful
+      })
+      .addCase(cancelCourseBundle.rejected, (state) => {
+        state.loading = false;   // ✅ MUST
       });
   },
 });

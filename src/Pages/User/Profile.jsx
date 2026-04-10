@@ -1,20 +1,23 @@
 import React, { useEffect } from "react";
+// import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
-// import { cancelCourseBundle } from "../../Redux/razorpaySlice";
 import { getUserData } from "../../Redux/Slices/authSlice";
+import { cancelCourseBundle } from "../../Redux/Slices/RazorpaySlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const userData = useSelector((state) => state?.auth?.data);
+
 
   // function to handle the cancel subscription of course
   const handleCourseCancelSubscription = async () => {
-    // await dispatch(cancelCourseBundle());
+    await dispatch(cancelCourseBundle());
     await dispatch(getUserData());
+    navigate("/");
   };
 
   useEffect(() => {
@@ -72,7 +75,7 @@ const Profile = () => {
             </Link>
           </div>
 
-          {userData?.subscription?.status === "created" && (
+          {userData?.subscription?.status === "active" && (
             <button
               onClick={handleCourseCancelSubscription}
               className="w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold cursor-pointer text-center"

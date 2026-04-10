@@ -16,7 +16,7 @@ const CreateCourse = () => {
   const { initialCourseData } = useLocation().state;
 
   // for toggling disable of image input box
-  const [isDisabled, setIsDisabled] = useState(!initialCourseData?.newCourse);
+  // const [isDisabled, setIsDisabled] = useState(!initialCourseData?.newCourse); ⚡
 
   // for storing the user input
   const [userInput, setUserInput] = useState({
@@ -169,7 +169,7 @@ const CreateCourse = () => {
                   id="image_uploads"
                   name="image_uploads"
                   accept=".jpg, .jpeg, .png"
-                  disabled={isDisabled}
+                  // disabled={isDisabled} ⚡
                 />
               </div>
 

@@ -71,6 +71,7 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 export const getUserData = createAsyncThunk("/user/details", async () => {
   try {
     const res = await axiosInstance.get("/user/me");
+    console.log("AFTER CANCEL API:", res.data);
     return res?.data;
   } catch (error) {
     toast.error(error.message);
