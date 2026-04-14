@@ -41,7 +41,7 @@ const CheckoutSuccess = () => {
           {/* adding back to homepage button */}
           <Link
             className="bg-green-500 hover:bg-green-600 transition-all ease-in-out duration-300 absolute bottom-0 w-full text-center py-2 text-xl font-bold rounded-bl-lg rounded-br-lg"
-            to={-2}
+            to={-3}
           >
             <button>Start Learning</button>
           </Link>

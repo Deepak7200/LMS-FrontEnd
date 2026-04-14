@@ -9,6 +9,7 @@ import CourseDescription from './Pages/Course/CourseDescription'
 import Courses from './Pages/Course/CourseList'
 import CreateCourse from './Pages/Course/CreateCourse'
 import AddLecture from './Pages/Dashboard/AddLecture'
+import AdminDashboard from './Pages/Dashboard/AdminDashboard'
 import DisplayLectures from './Pages/Dashboard/DisplayLectures'
 import Denied from './Pages/Denied'
 import HomePage from './Pages/HomePage'
@@ -20,7 +21,6 @@ import CheckoutSuccess from './Pages/Payment/CheckoutSuccess'
 import Signup from './Pages/Signup'
 import EditProfile from './Pages/User/EditProfile'
 import Profile from './Pages/User/Profile'
-
 
 function App() { 
 
@@ -38,8 +38,9 @@ function App() {
          <Route path="/login" element={<Login/>}> Login </Route>
 
          <Route element={<RequireAuth allowedRoles={["ADMIN"]}/>}>
-          <Route path='/course/create' element={<CreateCourse/>}/>
+          <Route path='/course/create' element={<CreateCourse/>}/>  
           <Route path="/course/addlecture" element={<AddLecture />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
          </Route>
 
          <Route element={<RequireAuth allowedRoles={["ADMIN","USER"]}/>}>

@@ -110,7 +110,7 @@ const Checkout = () => {
             </p>
 
             <p className="flex items-center justify-center gap-1 text-2xl font-bold text-yellow-500">
-              <BiRupee /> <span>1</span>only
+              <BiRupee/> <span>499</span> only
             </p>
 
             <div className="text-gray-200">

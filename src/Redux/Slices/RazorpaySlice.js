@@ -8,8 +8,8 @@ const initialState = {
   key: "",
   subscription_id: "",
   isPaymentVerified: false,
-  allPayments: {},
-  finalMonths: {},
+  allPayments: [],
+  finalMonths: [],
   monthlySalesRecord: [],
 };
 
@@ -116,5 +116,5 @@ const razorpaySlice = createSlice({
   },
 });
 
-const razorpaySliceReducer = razorpaySlice.actions;
+const razorpaySliceReducer = razorpaySlice.reducer;
 export default razorpaySliceReducer;
