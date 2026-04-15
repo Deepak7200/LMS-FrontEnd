@@ -37,12 +37,10 @@ const AdminDashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { allUsersCount, subscribedUsersCount } = useSelector(
-    (state) => state.stat
-  );
-  const { allPayments, monthlySalesRecord } = useSelector(
-    (state) => state.razorpay
-  );
+  const { allUsersCount, subscribedUsersCount } = useSelector( (state) => state.stat );
+  const { allPayments, monthlySalesRecord } = useSelector( (state) => state.razorpay );
+
+  console.log(allPayments?.count);
 
   const userData = {
     labels: ["Registered User", "Enrolled User"],
@@ -90,7 +88,7 @@ const AdminDashboard = () => {
 
   // function to handle the course delete
   const handleCourseDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete the course?")) {
+    if (window.confirm("Are you sure you want to delete the course?")) { 
       const res = await dispatch(deleteCourse(id));
 
       // fetching the new updated data for the course
@@ -164,9 +162,7 @@ const AdminDashboard = () => {
               <div className="flex items-center justify-between py-5 px-5 gap-5 rounded-md shadow-md">
                 <div className="flex flex-col items-center">
                   <p className="font-semibold">Total Revenue</p>
-                  <h3 className="text-4xl font-bold">
-                    {allPayments?.count * 499}
-                  </h3>
+                  <h3 className="text-4xl font-bold">{allPayments?.count * 499}</h3>
                 </div>
                 <GiMoneyStack className="text-green-500 text-5xl" />
               </div>

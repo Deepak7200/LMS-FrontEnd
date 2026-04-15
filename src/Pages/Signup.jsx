@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../Layouts/HomeLayout";
-import { createAccount } from "../Redux/Slices/authSlice";
+import { createAccount, login } from "../Redux/Slices/authSlice";
 
 function Signup() {
   
@@ -93,9 +93,14 @@ function Signup() {
 
     // calling create account action
     const res = await dispatch(createAccount(formData));
+    const email = signupData.email;
+    const password = signupData.password;
 
     // redirect to login page if true
-    if (res?.payload?.success) navigate("/login");
+    if (res?.payload?.success) {
+      await dispatch(login({ email, password }));
+      navigate("/");
+    }
 
     // clearing the signup inputs
     setSignupData({
