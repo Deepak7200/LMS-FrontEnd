@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import authSliceReducer from "./Slices/authSlice";
+import authSliceReducer from "./Slices/Authorization";
 import courseSliceReducer from "./Slices/CourseSlice";
 import lectureSliceReducer from "./Slices/LectureSlice";
 import razorpaySliceReducer from "./Slices/RazorpaySlice";

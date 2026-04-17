@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
-import { getUserData } from "../../Redux/Slices/authSlice";
+import { getUserData } from "../../Redux/Slices/Authorization";
 
 const CheckoutSuccess = () => {
     const dispatch = useDispatch();
