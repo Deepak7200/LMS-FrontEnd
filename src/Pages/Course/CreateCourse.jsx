@@ -97,7 +97,7 @@ return (
       >
         <Link
           to={"/admin/dashboard"}
-          className="absolute top-8 text-2xl link text-accent cursor-pointer text-yellow-500"
+          className="absolute top-8 text-2xl link cursor-pointer"
         >
           <AiOutlineArrowLeft />
         </Link>

@@ -16,6 +16,28 @@ function HomePage() {
                         We have a large library of courses taught by highly skilled and qualified faculties at a very affordable cost.
                     </p>
 
+                    <table className="border-2 border-blue-500 rounded-lg border-separate border-spacing-y-3 p-2">
+  <tbody>
+    <tr>
+      <td></td>
+      <td className="p-1 rounded-sm bg-blue-500"> Demo Accounts </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td> admin@mail.in </td>
+      <td></td>
+      <td> @123Admin </td>
+    </tr>
+
+    <tr>
+      <td> user@mail.in </td>
+      <td></td>
+      <td> @123User </td>
+    </tr>
+  </tbody>
+</table>
+
                     <div className="space-x-6">
                         <Link to="/courses">
                             <button className="bg-yellow-500 px-5 py-3 rounded-md font-semibold text-lg cursor-pointer hover:bg-yellow-600 transition-all ease-in-out duration-300 ">
