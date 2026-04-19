@@ -14,8 +14,8 @@ const Checkout = () => {
   const subscription_id = useSelector((state) => state?.razorpay?.subscription_id);
   // const isPaymentVerified = useSelector((state) => state?.razorpay?.isPaymentVerified);
   const userData = useSelector((state) => state?.auth?.data);
+  // const [isLoading, setIsLoading] = useState(false);
   
-
   // for storing the payment details after successfull transaction
   const paymentDetails = {
     razorpay_payment_id: "",
@@ -85,6 +85,26 @@ const Checkout = () => {
       await dispatch(purchaseCourseBundle()); 
     })();
   }, []);
+
+  // console.log(isLoading);
+
+//   useEffect(() => {
+//   const fetchData = async () => {
+//     try {
+//       setIsLoading(true);
+
+//       await dispatch(getRazorPayId()).unwrap();
+//       await dispatch(purchaseCourseBundle()).unwrap();
+
+//     } catch (error) {
+//       console.error(error);
+//       toast.error("Something went wrong");
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   };
+//   fetchData();
+// }, []);
 
   return (
     <HomeLayout>
