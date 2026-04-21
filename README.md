@@ -14,14 +14,30 @@
 https://www.deepaklms.online/
 
 ## 📸 Screenshots
-![LMS Screenshot](./images/AdminDashboard.png)
-![LMS Screenshot](./images/AllCourses.png)
-![LMS Screenshot](./images/CheckoutPage(User).png)
-![LMS Screenshot](./images/CheckoutSeccess(User).png)
-![LMS Screenshot](./images/DisplayLectures(Admin).png)
+
+### Home Page
 ![LMS Screenshot](./images/HomePage.png)
-![LMS Screenshot](./images/ProfilePage.png)
+
+### All Courses
+![LMS Screenshot](./images/AllCourses.png)
+
+### Signup Page
 ![LMS Screenshot](./images/SignupPage.png)
+
+### Profile Page
+![LMS Screenshot](./images/ProfilePage.png)
+
+### Checkout Page (User)
+![LMS Screenshot](./images/CheckoutPage(User).png)
+
+### Checkout Seccess (User)
+![LMS Screenshot](./images/CheckoutSeccess(User).png)
+
+### Admin Dashboard
+![LMS Screenshot](./images/AdminDashboard.png)
+
+### Display Lectures (Admin Account View)
+![LMS Screenshot](./images/DisplayLectures(Admin).png)
 
 ## 📦 Installation
 ```bash
