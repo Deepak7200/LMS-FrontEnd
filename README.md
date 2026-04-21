@@ -7,7 +7,7 @@
 
 ## 🛠 Tech Stack
 - React
-- CSS
+- Tailwind
 - JavaScript
 
 ## 🔗 Live Demo
