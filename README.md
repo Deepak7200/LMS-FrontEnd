@@ -36,7 +36,7 @@ https://www.deepaklms.online/
 ### Admin Dashboard
 ![LMS Screenshot](./images/AdminDashboard.png)
 
-### Display Lectures (Admin Account View)
+### Display Lectures (Admin View)
 ![LMS Screenshot](./images/DisplayLectures(Admin).png)
 
 ## 📦 Installation
