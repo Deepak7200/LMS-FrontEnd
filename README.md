@@ -1,3 +1,31 @@
-# LMS Frontend
+# 🎓 LMS Frontend
 
-### Setup instruction
+## 🚀 Features
+- Browse courses
+- Clean and responsive UI
+- User-friendly navigation
+
+## 🛠 Tech Stack
+- React
+- CSS
+- JavaScript
+
+## 🔗 Live Demo
+https://www.deepaklms.online/
+
+## 📸 Screenshots
+![LMS Screenshot](./images/AdminDashboard.png)
+![LMS Screenshot](./images/AllCourses.png)
+![LMS Screenshot](./images/CheckoutPage(User).png)
+![LMS Screenshot](./images/CheckoutSeccess(User).png)
+![LMS Screenshot](./images/DisplayLectures(Admin).png)
+![LMS Screenshot](./images/HomePage.png)
+![LMS Screenshot](./images/ProfilePage.png)
+![LMS Screenshot](./images/SignupPage.png)
+
+## 📦 Installation
+```bash
+git clone https://github.com/Deepak7200/LMS-FrontEnd
+cd LMS-FrontEnd
+npm install
+npm start
