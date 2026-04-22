@@ -57,21 +57,34 @@ export const createNewCourse = createAsyncThunk(
 );
 
 // function to delete the course
-export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
+// export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
+//   try {
+//     const res = axiosInstance.delete(`courses/${id}`);
+
+//     toast.promise(res, {
+//       loading: "Deleting the course...",
+//       success: "Courses deleted successfully",
+//       error: "Failed to delete course",
+//     });
+
+//     const response = await res;
+//     return response.data;
+//   } 
+//   catch (error) {
+//     toast.error(error?.response?.data?.message);
+//   }
+// });
+
+export const deleteCourse = createAsyncThunk("/course/delete", async () => {
   try {
-    const res = axiosInstance.delete(`courses/${id}`);
-
-    toast.promise(res, {
-      loading: "Deleting the course...",
-      success: "Courses deleted successfully",
-      error: "Failed to delete course",
-    });
-
-    const response = await res;
-    return response.data;
-  } catch (error) {
-    toast.error(error?.response?.data?.message);
-  }
+      toast("Deletion restricted in demo mode!", {
+        icon: "⚠️"
+      });
+      return;
+    } 
+    catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
 });
 
 const courseSlice = createSlice({

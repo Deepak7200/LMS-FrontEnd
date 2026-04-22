@@ -51,24 +51,35 @@ export const addCourseLecture = createAsyncThunk( "/course/lecture/add", async (
   }
 );
 
-// function to delete the lecture from the course
-export const deleteCourseLecture = createAsyncThunk( "/course/lecture/delete", async (data) => {
+// function to delete the lecture from the course ⚡
+// export const deleteCourseLecture = createAsyncThunk( "/course/lecture/delete", async (data) => {
+//     try {
+//       const res = axiosInstance.delete(`/courses/?courseId=${data.courseId}&lectureId=${data.lectureId}`);
+
+//       toast.promise(res, {
+//         loading: "Deleting the lecture...",
+//         success: "Lecture deleted successfully",
+//         error: "Failed to delete the lecture",
+//       });
+
+//       const response = await res;
+//       return response.data;
+//     } catch (error) {
+//       toast.error(error?.response?.data?.message);
+//     }
+// });
+
+export const deleteCourseLecture = createAsyncThunk( "/course/lecture/delete", async () => {
     try {
-      const res = axiosInstance.delete(`/courses/?courseId=${data.courseId}&lectureId=${data.lectureId}`);
-
-      toast.promise(res, {
-        loading: "Deleting the lecture...",
-        success: "Lecture deleted successfully",
-        error: "Failed to delete the lecture",
+      toast("Deletion restricted in demo mode!", {
+        icon: "⚠️"
       });
-
-      const response = await res;
-      return response.data;
-    } catch (error) {
+      return;
+    } 
+    catch (error) {
       toast.error(error?.response?.data?.message);
     }
-  }
-);
+});
 
 const lectureSlice = createSlice({
   name: "lecture",
