@@ -51,10 +51,10 @@ const EditProfile = () => {
     event.preventDefault();
 
     // checking for the empty field
-    if (!data.fullName || !data.avatar) {
-      toast.error("All fields are mandatory");
-      return;
-    }
+    // if (!data.fullName || !data.avatar) {
+    //   toast.error("All fields are mandatory");
+    //   return;
+    // }
 
     // checking the length of name
     if (data.fullName.length < 5) {
