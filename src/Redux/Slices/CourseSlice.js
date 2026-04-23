@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
 import axiosInstance from "../../Helpers/axiosInstance";
+import RestrictedCourseAndLectures from "../../Pages/RestrictedCourseAndLectures";
 
 
 const initialState = {
@@ -57,30 +58,37 @@ export const createNewCourse = createAsyncThunk(
 );
 
 // function to delete the course
-// export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
-//   try {
-//     const res = axiosInstance.delete(`courses/${id}`);
+export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
+  try {
+    if(RestrictedCourseAndLectures(id)){
+      toast("Deletion restricted for demo course!", {
+        icon: "⚠️"
+      });
+      return;
+    }
 
-//     toast.promise(res, {
-//       loading: "Deleting the course...",
-//       success: "Courses deleted successfully",
-//       error: "Failed to delete course",
-//     });
+    const res = axiosInstance.delete(`courses/${id}`);
 
-//     const response = await res;
-//     return response.data;
-//   } 
-//   catch (error) {
-//     toast.error(error?.response?.data?.message);
-//   }
-// });
+    toast.promise(res, {
+      loading: "Deleting the course...",
+      success: "Courses deleted successfully",
+      error: "Failed to delete course",
+    });
 
-export const deleteCourse = createAsyncThunk("/course/delete", async () => {
-  toast("Deletion restricted in demo mode!", {
-    icon: "⚠️"
-  });
-  return;
+    const response = await res;
+    return response.data;
+  } 
+  catch (error) {
+    toast.error(error?.response?.data?.message);
+  }
 });
+
+// export const deleteCourse = createAsyncThunk("/course/delete", async () => {
+//   toast("Deletion restricted in demo mode!", {
+//     icon: "⚠️"
+//   });
+//   return;
+// });
 
 const courseSlice = createSlice({
   name: "course",

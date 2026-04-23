@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
 import axiosInstance from "../../Helpers/axiosInstance";
+import RestrictedCourseAndLectures from "../../Pages/RestrictedCourseAndLectures";
 
 
 const initialState = {
@@ -52,29 +53,37 @@ export const addCourseLecture = createAsyncThunk( "/course/lecture/add", async (
 );
 
 // function to delete the lecture from the course ⚡
-// export const deleteCourseLecture = createAsyncThunk( "/course/lecture/delete", async (data) => {
-//     try {
-//       const res = axiosInstance.delete(`/courses/?courseId=${data.courseId}&lectureId=${data.lectureId}`);
+export const deleteCourseLecture = createAsyncThunk( "/course/lecture/delete", async (data) => {
+    try {
 
-//       toast.promise(res, {
-//         loading: "Deleting the lecture...",
-//         success: "Lecture deleted successfully",
-//         error: "Failed to delete the lecture",
-//       });
+      if(RestrictedCourseAndLectures(data.lectureId)){
+        toast("Deletion restricted for demo lecture!", {
+          icon: "⚠️"
+        });
+        return;
+      }
 
-//       const response = await res;
-//       return response.data;
-//     } catch (error) {
-//       toast.error(error?.response?.data?.message);
-//     }
-// });
+      const res = axiosInstance.delete(`/courses/?courseId=${data.courseId}&lectureId=${data.lectureId}`);
 
-export const deleteCourseLecture = createAsyncThunk( "/course/lecture/delete", async () => {
-  toast("Deletion restricted in demo mode!", {
-    icon: "⚠️"
-  });
-  return;
+      toast.promise(res, {
+        loading: "Deleting the lecture...",
+        success: "Lecture deleted successfully",
+        error: "Failed to delete the lecture",
+      });
+
+      const response = await res;
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
 });
+
+// export const deleteCourseLecture = createAsyncThunk( "/course/lecture/delete", async () => {
+//   toast("Deletion restricted in demo mode!", {
+//     icon: "⚠️"
+//   });
+//   return;
+// });
 
 const lectureSlice = createSlice({
   name: "lecture",

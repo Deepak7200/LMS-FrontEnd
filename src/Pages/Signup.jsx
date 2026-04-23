@@ -59,7 +59,6 @@ function Signup() {
 
     // checking empty fields
     if (
-      !signupData.avatar ||
       !signupData.email ||
       !signupData.fullName ||
       !signupData.password

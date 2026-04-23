@@ -62,6 +62,13 @@ const EditProfile = () => {
       return;
     }
 
+    if(data.userID==="69e81e95a6623bef3440f19e" || data.userID==="69e81fafa6623bef3440f1a4"){
+      toast("Editing is disabled for demo accounts!", {
+        icon: "⚠️"
+      });
+      return;
+    }
+
     // creating the form data from the existing data
     const formData = new FormData();
     formData.append("fullName", data.fullName);
