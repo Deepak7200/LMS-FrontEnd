@@ -57,7 +57,7 @@ function HomePage() {
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td> Login as Admin </td>
+                                    <td className="text-gray-200 font-semibold"> Admin Access </td>
                                     <td></td>
                                     <td>
                                        <button
@@ -75,7 +75,7 @@ function HomePage() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td> Login as User </td>
+                                    <td className="text-gray-200 font-semibold"> User Access </td>
                                     <td></td>
                                     <td>
                                         <button
